@@ -5,24 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryDark"
-    tools:context=".ui.activity.MainActivity">
+    tools:context=".ui.activity.SplashScr">
 
-    <me.ibrahimsn.lib.SmoothBottomBar
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:iconSize="24dp"
-        app:iconMargin="8dp"
-        android:elevation="12dp"
-        app:indicatorRadius="8dp"
-        app:textSize="14sp"
-        app:backgroundColor="@color/primary"
+
+    <ImageView
+        android:id="@+id/splash_logo"
+        android:layout_width="274dp"
+        android:layout_height="218dp"
+        android:src="@drawable/splash_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-         />
-
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
