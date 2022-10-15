@@ -7,22 +7,32 @@
     android:background="@color/primaryDark"
     tools:context=".ui.activity.MainActivity">
 
+    <fragment
+        android:id="@+id/frame"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_graph" />
+
     <me.ibrahimsn.lib.SmoothBottomBar
-        android:id="@+id/bottomBar"
+        android:id="@+id/bottomNavBar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        app:iconSize="24dp"
-        app:iconMargin="8dp"
         android:elevation="12dp"
-        app:indicatorRadius="8dp"
-        app:textSize="14sp"
         app:backgroundColor="@color/primary"
+        app:iconMargin="8dp"
+        app:iconSize="24dp"
+        app:indicatorRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu"
-         />
-
+        app:textSize="14sp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,7 @@
         android:title="@string/home"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/statsFragment"
+        android:id="@+id/marketFragment"
         android:icon="@drawable/ic_stats"
         android:title="@string/stats"
         app:showAsAction="ifRoom"/>
