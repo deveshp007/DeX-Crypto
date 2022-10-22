@@ -6,4 +6,6 @@
     <color name="primaryDark">#0D1321</color>
     <color name="accent">#748CAB</color>
     <color name="accentDark">#3E5C76</color>
+    <color name="green">#4fc281</color>
+    <color name="red">#d6455d</color>
 </resources>

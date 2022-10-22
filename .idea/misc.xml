@@ -3,7 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable-v24/active_button.xml" value="0.1525" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable-v24/detail_content_bg.xml" value="0.1525" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable-v24/ic_back_stack.xml" value="0.1525" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable-v24/ic_caret_down.xml" value="0.1525" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable-v24/ic_caret_up.xml" value="0.1525" />
         <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1525" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable-v24/ic_star.xml" value="0.1525" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable-v24/ic_star_outline.xml" value="0.1525" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable-v24/ic_user.xml" value="0.1525" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable-v24/market_content_bg.xml" value="0.1525" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable-v24/search_field_bg.xml" value="0.12" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable-v24/top_gainers_bg.xml" value="0.1525" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable-v24/top_losers_bg.xml" value="0.1525" />
         <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable/ic_collections.xml" value="0.229" />
         <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable/ic_home.xml" value="0.229" />
         <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1525" />
@@ -11,7 +23,13 @@
         <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/drawable/splash_logo.xml" value="0.1525" />
         <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/layout/currency_item_layout.xml" value="0.21822916666666667" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/layout/fragment_details.xml" value="0.21822916666666667" />
         <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/layout/fragment_home.xml" value="0.21822916666666667" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/layout/fragment_market.xml" value="0.21822916666666667" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/layout/fragment_saved.xml" value="0.21822916666666667" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/layout/fragment_top_gain_lose.xml" value="0.21822916666666667" />
+        <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/layout/top_currency_layout.xml" value="0.21822916666666667" />
         <entry key="..\:/Android Projects/DeXCrypto/app/src/main/res/menu/bottom_nav_menu.xml" value="0.264" />
       </map>
     </option>
