@@ -1,42 +1,45 @@
 package alpha.dex.dexcrypto.ui.fragment
 
+import alpha.dex.dexcrypto.adapter.TopMarketAdapter
+import alpha.dex.dexcrypto.api.ApiInterface
+import alpha.dex.dexcrypto.api.ApiUtilities
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import alpha.dex.dexcrypto.databinding.FragmentHomeBinding
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import retrofit2.create
 
 class HomeFragment : Fragment() {
 
-    companion object {
-        const val TAG = "FragmentStats"
-    }
 
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(
-            inflater, container, /* attachToParent */ false
-        )
+        binding = FragmentHomeBinding.inflate(layoutInflater)
+
+        getTopCurrencyList()
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentHomeBinding.bind(view)
 
+    private fun getTopCurrencyList() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val res = ApiUtilities.getInstance().create(ApiInterface::class.java).getMarketData()
+
+            withContext(Dispatchers.Main) {
+                binding.topCurrencyRecyclerView.adapter = TopMarketAdapter(requireContext(),res.body()!!.data.cryptoCurrencyList)
+            }
+        }
     }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
 }
