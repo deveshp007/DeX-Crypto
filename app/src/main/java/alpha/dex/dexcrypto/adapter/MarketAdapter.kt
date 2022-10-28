@@ -5,6 +5,7 @@ import alpha.dex.dexcrypto.databinding.CurrencyItemLayoutBinding
 import alpha.dex.dexcrypto.model.CryptoCurrency
 import alpha.dex.dexcrypto.ui.fragment.HomeFragmentDirections
 import alpha.dex.dexcrypto.ui.fragment.MarketFragmentDirections
+import alpha.dex.dexcrypto.ui.fragment.SavedFragmentDirections
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -69,6 +70,10 @@ class MarketAdapter(var context: Context, var list: List<CryptoCurrency>, var ty
             } else if (type == "market") {
                 findNavController(it).navigate(
                     MarketFragmentDirections.actionMarketFragmentToDetailsFragment(item)
+                )
+            } else {
+                findNavController(it).navigate(
+                    SavedFragmentDirections.actionSavedFragmentToDetailsFragment(item)
                 )
             }
         }

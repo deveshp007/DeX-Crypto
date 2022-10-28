@@ -8,9 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import alpha.dex.dexcrypto.databinding.FragmentDetailsBinding
 import alpha.dex.dexcrypto.model.CryptoCurrency
+import android.content.Context
 import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 
 class DetailsFragment : Fragment() {
@@ -33,8 +36,58 @@ class DetailsFragment : Fragment() {
         loadChart(data)
 
         setButtonOnclick(data)
+        addToSaved(data)
 
         return binding.root
+    }
+
+    var savedList: ArrayList<String>? = null
+    var savedListIsChecked = false
+    private fun addToSaved(data: CryptoCurrency) {
+        readData()
+        savedListIsChecked = if (savedList!!.contains(data.symbol)) {
+            binding.addWatchlistButton.setImageResource(R.drawable.ic_star)
+            true
+        } else {
+            binding.addWatchlistButton.setImageResource(R.drawable.ic_star_outline)
+            false
+        }
+        binding.addWatchlistButton.setOnClickListener {
+            savedListIsChecked = if (!savedListIsChecked) {
+                if (!savedList!!.contains(data.symbol)) {
+                    savedList!!.add(data.symbol)
+                }
+                storeData()
+                binding.addWatchlistButton.setImageResource(R.drawable.ic_star)
+                true
+            } else {
+                binding.addWatchlistButton.setImageResource(R.drawable.ic_star_outline)
+                savedList!!.remove(data.symbol)
+                storeData()
+                false
+            }
+        }
+    }
+
+    private fun storeData() {
+        val sharedPreferences =
+            requireContext().getSharedPreferences("savedList", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val gson = Gson()
+        val json = gson.toJson(savedList)
+        editor.putString("savedList", json)
+        editor.apply()
+    }
+
+    private fun readData() {
+        val sharedPreferences =
+            requireContext().getSharedPreferences("savedList", Context.MODE_PRIVATE)
+        val gson = Gson()
+        val json = sharedPreferences.getString("savedList", ArrayList<String>().toString())
+
+        val type = object : TypeToken<ArrayList<String>>() {}.type
+
+        savedList = gson.fromJson(json, type)
     }
 
     private fun setButtonOnclick(item: CryptoCurrency) {
@@ -142,11 +195,11 @@ class DetailsFragment : Fragment() {
         fourHour: AppCompatButton,
         oneHour: AppCompatButton
     ) {
-            oneDay.background = null
-            oneMonth.background = null
-            oneWeek.background = null
-            fourHour.background = null
-            oneHour.background = null
+        oneDay.background = null
+        oneMonth.background = null
+        oneWeek.background = null
+        fourHour.background = null
+        oneHour.background = null
     }
 
     private fun loadChart(item: CryptoCurrency) {
