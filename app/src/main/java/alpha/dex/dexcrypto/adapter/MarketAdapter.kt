@@ -12,7 +12,7 @@ import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class MarketAdapter(var context: Context, val list: List<CryptoCurrency>) :
+class MarketAdapter(var context: Context, var list: List<CryptoCurrency>) :
     RecyclerView.Adapter<MarketAdapter.MarketViewHolder>() {
 
     inner class MarketViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -23,6 +23,11 @@ class MarketAdapter(var context: Context, val list: List<CryptoCurrency>) :
         return MarketViewHolder(
             LayoutInflater.from(context).inflate(R.layout.currency_item_layout, parent, false)
         )
+    }
+
+    fun updateData(dataItem: List<CryptoCurrency>){
+        list = dataItem
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: MarketViewHolder, position: Int) {

@@ -6,39 +6,90 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import alpha.dex.dexcrypto.R
+import alpha.dex.dexcrypto.adapter.MarketAdapter
+import alpha.dex.dexcrypto.api.ApiInterface
+import alpha.dex.dexcrypto.api.ApiUtilities
 import alpha.dex.dexcrypto.databinding.FragmentHomeBinding
 import alpha.dex.dexcrypto.databinding.FragmentMarketBinding
+import alpha.dex.dexcrypto.model.CryptoCurrency
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View.GONE
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MarketFragment : Fragment() {
 
-    companion object {
-        const val TAG = "FragmentStats"
-    }
 
-    private var _binding: FragmentMarketBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentMarketBinding
+
+    private lateinit var list: List<CryptoCurrency>
+    private lateinit var adapter: MarketAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMarketBinding.inflate(
-            inflater, container, /* attachToParent */ false
-        )
+        binding = FragmentMarketBinding.inflate(layoutInflater)
+
+        list = listOf()
+        adapter = MarketAdapter(requireContext(), list)
+        binding.currencyRecyclerView.adapter = adapter
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            val res = ApiUtilities.getInstance().create(ApiInterface::class.java).getMarketData()
+
+            if (res.body() != null) {
+                withContext(Dispatchers.Main) {
+                    list = res.body()!!.data.cryptoCurrencyList
+
+                    adapter.updateData(list)
+                    binding.spinKitView.visibility = GONE
+                }
+            }
+        }
+
+        searchCoin()
+
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentMarketBinding.bind(view)
+    lateinit var searchText: String
+    private fun searchCoin() {
+        binding.searchEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                searchText = p0.toString().lowercase()
+
+                updateRecyclerView()
+            }
+        })
     }
 
+    private fun updateRecyclerView() {
+        val data = ArrayList<CryptoCurrency>()
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
+        for (item in list) {
+            val coinName = item.name.lowercase(Locale.getDefault())
+            val coinSymbol = item.symbol.lowercase(Locale.getDefault())
+
+            if (coinName.contains(searchText) || coinSymbol.contains(searchText)) {
+                data.add(item)
+            }
+        }
+        adapter.updateData(data)
     }
 
 }
