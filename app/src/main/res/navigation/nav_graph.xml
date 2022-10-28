@@ -18,12 +18,20 @@
         android:id="@+id/marketFragment"
         android:name="alpha.dex.dexcrypto.ui.fragment.MarketFragment"
         android:label="fragment_market"
-        tools:layout="@layout/fragment_market" />
+        tools:layout="@layout/fragment_market" >
+        <action
+            android:id="@+id/action_marketFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/savedFragment"
         android:name="alpha.dex.dexcrypto.ui.fragment.SavedFragment"
         android:label="fragment_saved"
-        tools:layout="@layout/fragment_saved" />
+        tools:layout="@layout/fragment_saved" >
+        <action
+            android:id="@+id/action_savedFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="alpha.dex.dexcrypto.ui.fragment.DetailsFragment"

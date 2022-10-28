@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import alpha.dex.dexcrypto.R
 import alpha.dex.dexcrypto.adapter.MarketAdapter
 import alpha.dex.dexcrypto.api.ApiInterface
 import alpha.dex.dexcrypto.api.ApiUtilities
@@ -62,7 +61,7 @@ class TopGainLoseFragment : Fragment() {
                             list.add(dataItem[i])
                         }
                         binding.topGainLoseRecyclerView.adapter =
-                            MarketAdapter(requireContext(), list)
+                            MarketAdapter(requireContext(), list, "home")
 
                     } else {
                         list.clear()
@@ -70,7 +69,7 @@ class TopGainLoseFragment : Fragment() {
                             list.add(dataItem[dataItem.size - 1 - i])
                         }
                         binding.topGainLoseRecyclerView.adapter =
-                            MarketAdapter(requireContext(), list)
+                            MarketAdapter(requireContext(), list, "home")
 
                     }
                 }

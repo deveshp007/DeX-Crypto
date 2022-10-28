@@ -4,6 +4,7 @@ import alpha.dex.dexcrypto.R
 import alpha.dex.dexcrypto.databinding.CurrencyItemLayoutBinding
 import alpha.dex.dexcrypto.model.CryptoCurrency
 import alpha.dex.dexcrypto.ui.fragment.HomeFragmentDirections
+import alpha.dex.dexcrypto.ui.fragment.MarketFragmentDirections
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,7 @@ import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class MarketAdapter(var context: Context, var list: List<CryptoCurrency>) :
+class MarketAdapter(var context: Context, var list: List<CryptoCurrency>, var type: String) :
     RecyclerView.Adapter<MarketAdapter.MarketViewHolder>() {
 
     inner class MarketViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -25,7 +26,7 @@ class MarketAdapter(var context: Context, var list: List<CryptoCurrency>) :
         )
     }
 
-    fun updateData(dataItem: List<CryptoCurrency>){
+    fun updateData(dataItem: List<CryptoCurrency>) {
         list = dataItem
         notifyDataSetChanged()
     }
@@ -59,10 +60,17 @@ class MarketAdapter(var context: Context, var list: List<CryptoCurrency>) :
                 "${String.format("%.02f", item.quotes[0].percentChange24h)} %"
         }
 
-        holder.itemView.setOnClickListener{
-            findNavController(it).navigate(
-                HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item)
-            )
+        holder.itemView.setOnClickListener {
+
+            if (type == "home") {
+                findNavController(it).navigate(
+                    HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item)
+                )
+            } else if (type == "market") {
+                findNavController(it).navigate(
+                    MarketFragmentDirections.actionMarketFragmentToDetailsFragment(item)
+                )
+            }
         }
     }
 

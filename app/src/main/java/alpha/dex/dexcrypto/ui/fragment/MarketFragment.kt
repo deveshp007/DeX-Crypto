@@ -5,11 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import alpha.dex.dexcrypto.R
 import alpha.dex.dexcrypto.adapter.MarketAdapter
 import alpha.dex.dexcrypto.api.ApiInterface
 import alpha.dex.dexcrypto.api.ApiUtilities
-import alpha.dex.dexcrypto.databinding.FragmentHomeBinding
 import alpha.dex.dexcrypto.databinding.FragmentMarketBinding
 import alpha.dex.dexcrypto.model.CryptoCurrency
 import android.text.Editable
@@ -38,7 +36,7 @@ class MarketFragment : Fragment() {
         binding = FragmentMarketBinding.inflate(layoutInflater)
 
         list = listOf()
-        adapter = MarketAdapter(requireContext(), list)
+        adapter = MarketAdapter(requireContext(), list, "market")
         binding.currencyRecyclerView.adapter = adapter
 
         lifecycleScope.launch(Dispatchers.IO) {
