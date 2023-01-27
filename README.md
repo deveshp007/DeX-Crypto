@@ -7,4 +7,15 @@
 <p align="center">
 A small application based on modern Android application tech-stacks and MVVM architecture.<br>This project is for focusing especially on using API with retrofit, clean User-Interface and MVVM architecture. 
 </p>
-</br>
+<br>
+
+
+## Screenshots
+
+        Splash Screen         |Home|Market
+:----------------------------:|:--------------:|:-----------:|
+ ![splash](images/splash.png) | ![home](images/home.png) | ![market](images/market.png)
+Saved         |Search|Detail
+![saved](images/saved.png) | ![search](images/search.png) | ![detail](images/detail.png)
+
+
