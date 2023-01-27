@@ -18,4 +18,19 @@ A small application based on modern Android application tech-stacks and MVVM arc
 |            Saved             |            Search            |            Detail            |
 |  ![saved](images/saved.png)  | ![search](images/search.png) | ![detail](images/detail.png) |
 
+## Download
 
+Go to the [Releases](https://github.com/deveshp007/DeX-Crypto/releases) to download.
+
+Or directly [Download](https://github.com/deveshp007/DeX-Crypto/releases/download/v1.0.0/dex-crypto.apk) APK.
+
+## Tech stack
+
+- Kotlin
+- Material Design
+- Splash Screen
+  - Animation on logo
+- View Binding
+- Architecture
+  - MVVM Architecture
+  - Repository pattern
