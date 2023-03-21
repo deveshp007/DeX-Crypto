@@ -8,6 +8,20 @@
 A small application based on modern Android application tech-stacks and MVVM architecture.<br>This project is for focusing especially on using API with retrofit, clean User-Interface and MVVM architecture. 
 </p>
 
+<div align="center">
+    <a href="https://github.com/deveshp007/DeX-Crypto/releases">
+
+  <img alt="Download count" src="https://img.shields.io/github/downloads/deveshp007/DeX-Crypto/total?style=social">
+  </a>
+      <a href="https://github.com/deveshp007/DeX-Crypto/releases/latest">
+    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/deveshp007/DeX-Crypto?style=social">
+  </a>
+  <a href="https://github.com/deveshp007/DeX-Crypto/blob/main/LICENSE.md">
+    <img alt="GitHub" src="https://img.shields.io/github/license/deveshp007/DeX-Crypto?style=social">
+  </a>
+  <img alt="release date" src="https://img.shields.io/github/release-date/deveshp007/DeX-Crypto?style=social">
+</div>
+
 ## Screenshots
 
 |        Splash Screen         |             Home             |            Market            |
